@@ -2,6 +2,8 @@ Indent Guides for Brackets
 ==========
 An extension for [Brackets](https://github.com/adobe/brackets/) to show indent guides in the code editor.
 
+_**Note:** Extension not finished. Will announce on [Brackets-Dev](https://groups.google.com/forum/#!forum/brackets-dev) when it's ready_.
+
 How to Install
 ==============
 To use this extension:
