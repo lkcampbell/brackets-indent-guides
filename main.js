@@ -40,7 +40,8 @@ define(function (require, exports, module) {
     // --- Constants ---
     var PREFERENCES_CLIENT_ID   = "com.github.lkcampbell.brackets-indent-guides",
         COMMAND_NAME            = "Show Indent Guides",
-        COMMAND_ID              = "lkcampbell.indent-guides";
+        COMMAND_ID              = "lkcampbell.indent-guides",
+        SHORTCUT_KEY            = "Ctrl-Alt-I";
 
     // --- Local variables ---
     var _defPrefs   = { enabled: false },
@@ -117,7 +118,7 @@ define(function (require, exports, module) {
 
     // --- Add to View menu ---
     if (_viewMenu) {
-        _viewMenu.addMenuItem(COMMAND_ID);
+        _viewMenu.addMenuItem(COMMAND_ID, SHORTCUT_KEY);
     }
 
     // --- Apply preferences ---
