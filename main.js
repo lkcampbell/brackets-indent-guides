@@ -31,6 +31,7 @@ define(function (require, exports, module) {
     // --- Required modules ---
     var PreferencesManager  = brackets.getModule("preferences/PreferencesManager"),
         Menus               = brackets.getModule("command/Menus"),
+        Editor              = brackets.getModule("editor/Editor").Editor,
         EditorManager       = brackets.getModule("editor/EditorManager"),
         CommandManager      = brackets.getModule("command/CommandManager"),
         DocumentManager     = brackets.getModule("document/DocumentManager"),
@@ -49,20 +50,28 @@ define(function (require, exports, module) {
     // Overlay that assigns Indent Guides style to all indents in the document
     var _indentGuidesOverlay = {
         token: function (stream, state) {
-            var char        = "",
-                fullEditor  = EditorManager.getCurrentFullEditor();
-                //indentUnit  = fullEditor.getIndentUnit(),
-                //tabSize     = fullEditor.getTabSize();
+            var char    = "",
+                tabSize = Editor.getTabSize(),
+                i       = 0;
 
             char = stream.next();
 
             if (char === "\t") {
                 return "lkcampbell-indent-guides";
             } else if (char === " ") {
-                // Figure out how many spaces equal one indent
+                for (i = 0; i < (tabSize - 1); i++) {
+                    char = stream.next();
+                    if (char === "\t") {
+                        return "lkcampbell-indent-guides";
+                    } else if (char !== " ") {
+                        stream.skipToEnd();
+                        return null;
+                    }
+                }
                 return "lkcampbell-indent-guides";
             } else {
                 stream.skipToEnd();
+                return null;
             }
         },
         flattenSpans : false
