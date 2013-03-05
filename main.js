@@ -80,12 +80,21 @@ define(function (require, exports, module) {
     // --- Event handlers ---
     function _updateOverlay() {
         var command     = CommandManager.get(COMMAND_ID),
-            codeMirror  = EditorManager.getCurrentFullEditor()._codeMirror;
+            fullEditor  = null,
+            codeMirror  = null;
 
-        if (command.getChecked()) {
-            codeMirror.addOverlay(_indentGuidesOverlay);
-        } else {
-            codeMirror.removeOverlay(_indentGuidesOverlay);
+        fullEditor = EditorManager.getCurrentFullEditor();
+
+        if (fullEditor !== null) {
+            codeMirror = fullEditor._codeMirror;
+        }
+
+        if (codeMirror !== null) {
+            if (command.getChecked()) {
+                codeMirror.addOverlay(_indentGuidesOverlay);
+            } else {
+                codeMirror.removeOverlay(_indentGuidesOverlay);
+            }
         }
     }
 
