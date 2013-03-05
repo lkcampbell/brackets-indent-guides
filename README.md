@@ -19,4 +19,4 @@ MIT-licensed -- see `main.js` for details.
 
 Compatibility
 =============
-Brackets Sprint 20 or newer.
+Brackets Sprint 21 or later.
