@@ -51,16 +51,16 @@ define(function (require, exports, module) {
     // Overlay that assigns Indent Guides style to all indents in the document
     var _indentGuidesOverlay = {
         token: function (stream, state) {
-            var char    = "",
-                tabSize = Editor.getTabSize(),
-                i       = 0;
+            var char        = "",
+                indentUnit  = Editor.getIndentUnit(),
+                i           = 0;
 
             char = stream.next();
 
             if (char === "\t") {
                 return "lkcampbell-indent-guides";
             } else if (char === " ") {
-                for (i = 0; i < (tabSize - 1); i++) {
+                for (i = 0; i < (indentUnit - 1); i++) {
                     char = stream.next();
                     if (char === "\t") {
                         return "lkcampbell-indent-guides";
