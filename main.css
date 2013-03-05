@@ -1,5 +1,13 @@
 .cm-lkcampbell-indent-guides {
-    border-left-color: #ccc;
-    border-left-style: dotted;
-    border-left-width: 1px;
+    position: relative;
+}
+
+.cm-lkcampbell-indent-guides:before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    height: 2.5ex;
+    width: 1px;
+    background-color: gray;
 }
