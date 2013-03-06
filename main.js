@@ -75,7 +75,7 @@ define(function (require, exports, module) {
                 return null;
             }
         },
-        flattenSpans : false
+        flattenSpans: false
     };
 
     // --- Event handlers ---
