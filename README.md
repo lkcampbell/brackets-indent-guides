@@ -12,14 +12,6 @@ To use this extension:
 4. Toggle the extension with **Brackets > View > Show Indent Guides** or use the
 shortcut keys: **Ctrl-Alt-I** on Windows or **Command-Alt-I** on Mac.
 
-Known Issues
-============
-
-**Indent guides do not show up on empty lines:**
-This extension uses a CodeMirror overlay to create the indent guides.  Unfortunately, CodeMirror does
-not currently allow overlays to assign styles to empty lines.  If I can get this added to the CodeMirror
-codebase, I will fix this problem in the near future.
-
 License
 =======
 MIT-licensed -- see `main.js` for details.
