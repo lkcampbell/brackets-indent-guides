@@ -1,9 +1,7 @@
-Indent Guides for Brackets
-==========
+# Indent Guides for Brackets
 An extension for [Brackets](https://github.com/adobe/brackets/) to show indent guides in the code editor.
 
-How to Install
-==============
+### How to Install
 To use this extension:
 
 1. [Download](https://github.com/lkcampbell/brackets-indent-guides/archive/master.zip)
@@ -12,10 +10,8 @@ To use this extension:
 4. Toggle the extension with **Brackets > View > Show Indent Guides** or use the
 shortcut keys: **Ctrl-Alt-I** on Windows or **Command-Alt-I** on Mac.
 
-License
-=======
+### License
 MIT-licensed -- see `main.js` for details.
 
-Compatibility
-=============
+### Compatibility
 Brackets Sprint 21 or later.
