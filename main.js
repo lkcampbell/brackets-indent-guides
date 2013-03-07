@@ -27,7 +27,7 @@
 
 define(function (require, exports, module) {
     "use strict";
-
+    
     // --- Required modules ---
     var PreferencesManager  = brackets.getModule("preferences/PreferencesManager"),
         Menus               = brackets.getModule("command/Menus"),
@@ -36,27 +36,27 @@ define(function (require, exports, module) {
         CommandManager      = brackets.getModule("command/CommandManager"),
         DocumentManager     = brackets.getModule("document/DocumentManager"),
         ExtensionUtils      = brackets.getModule("utils/ExtensionUtils");
-
+    
     // --- Constants ---
     var PREFERENCES_CLIENT_ID   = "com.github.lkcampbell.brackets-indent-guides",
         COMMAND_NAME            = "Show Indent Guides",
         COMMAND_ID              = "lkcampbell.indent-guides",
         SHORTCUT_KEY            = "Ctrl-Alt-I";
-
+    
     // --- Local variables ---
     var _defPrefs   = { enabled: false },
         _prefs      = PreferencesManager.getPreferenceStorage(PREFERENCES_CLIENT_ID, _defPrefs),
         _viewMenu   = Menus.getMenu(Menus.AppMenuBar.VIEW_MENU);
-
+    
     // Overlay that assigns Indent Guides style to all indents in the document
     var _indentGuidesOverlay = {
         token: function (stream, state) {
             var char        = "",
                 indentUnit  = Editor.getIndentUnit(),
                 i           = 0;
-
+            
             char = stream.next();
-
+            
             if (char === "\t") {
                 return "lkcampbell-indent-guides";
             } else if (char === " ") {
@@ -83,14 +83,11 @@ define(function (require, exports, module) {
         var command     = CommandManager.get(COMMAND_ID),
             fullEditor  = null,
             codeMirror  = null;
-
+        
         fullEditor = EditorManager.getCurrentFullEditor();
-
-        if (fullEditor !== null) {
-            codeMirror = fullEditor._codeMirror;
-        }
-
-        if (codeMirror !== null) {
+        codeMirror = fullEditor ? fullEditor._codeMirror : null;
+        
+        if (codeMirror) {
             if (command.getChecked()) {
                 codeMirror.addOverlay(_indentGuidesOverlay);
             } else {
@@ -99,29 +96,29 @@ define(function (require, exports, module) {
             codeMirror.refresh();
         }
     }
-
+    
     function _toggleIndentGuides() {
         var command = CommandManager.get(COMMAND_ID);
-
+        
         command.setChecked(!command.getChecked());
         _prefs.setValue("enabled", command.getChecked());
         _updateOverlay();
     }
-
+    
     // --- Make sure to update the Indent Guides when changing documents
     $(DocumentManager).on("currentDocumentChange", _updateOverlay);
-
+    
     // --- Load overlay style sheet ---
     ExtensionUtils.loadStyleSheet(module, "main.css");
-
+    
     // --- Register command ---
     CommandManager.register(COMMAND_NAME, COMMAND_ID, _toggleIndentGuides);
-
+    
     // --- Add to View menu ---
     if (_viewMenu) {
         _viewMenu.addMenuItem(COMMAND_ID, SHORTCUT_KEY);
     }
-
+    
     // --- Apply preferences ---
     CommandManager.get(COMMAND_ID).setChecked(_prefs.getValue("enabled"));
 });
