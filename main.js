@@ -96,6 +96,7 @@ define(function (require, exports, module) {
             } else {
                 codeMirror.removeOverlay(_indentGuidesOverlay);
             }
+            codeMirror.refresh();
         }
     }
 
