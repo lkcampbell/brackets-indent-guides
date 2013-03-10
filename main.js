@@ -44,9 +44,9 @@ define(function (require, exports, module) {
         SHORTCUT_KEY            = "Ctrl-Alt-I";
     
     // --- Local variables ---
-    var _defPrefs       = { enabled: false },
-        _prefs          = PreferencesManager.getPreferenceStorage(PREFERENCES_CLIENT_ID, _defPrefs),
-        _viewMenu       = Menus.getMenu(Menus.AppMenuBar.VIEW_MENU);
+    var _defPrefs   = { enabled: false },
+        _prefs      = PreferencesManager.getPreferenceStorage(PREFERENCES_CLIENT_ID, _defPrefs),
+        _viewMenu   = Menus.getMenu(Menus.AppMenuBar.VIEW_MENU);
     
     // Overlay that assigns Indent Guides style to all indents in the document
     var _indentGuidesOverlay = {
