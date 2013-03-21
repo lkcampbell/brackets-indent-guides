@@ -38,14 +38,13 @@ define(function (require, exports, module) {
         ExtensionUtils      = brackets.getModule("utils/ExtensionUtils");
     
     // --- Constants ---
-    var PREFERENCES_CLIENT_ID   = "com.github.lkcampbell.brackets-indent-guides",
-        COMMAND_NAME            = "Toggle Indent Guides",
+    var COMMAND_NAME            = "Toggle Indent Guides",
         COMMAND_ID              = "lkcampbell.toggle-indent-guides",
         SHORTCUT_KEY            = "Ctrl-Alt-I";
     
     // --- Local variables ---
     var _defPrefs   = { enabled: false },
-        _prefs      = PreferencesManager.getPreferenceStorage(PREFERENCES_CLIENT_ID, _defPrefs),
+        _prefs      = PreferencesManager.getPreferenceStorage(module, _defPrefs),
         _viewMenu   = Menus.getMenu(Menus.AppMenuBar.VIEW_MENU);
     
     // Overlay that assigns Indent Guides style to all indents in the document
