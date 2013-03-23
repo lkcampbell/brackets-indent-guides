@@ -14,4 +14,4 @@ shortcut keys: **Ctrl-Alt-I** on Windows or **Command-Alt-I** on Mac.
 MIT-licensed -- see `main.js` for details.
 
 ### Compatibility
-Brackets Sprint 21 or later.
+Brackets Sprint 22 or later.

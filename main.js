@@ -51,7 +51,7 @@ define(function (require, exports, module) {
     var _indentGuidesOverlay = {
         token: function (stream, state) {
             var char        = "",
-                indentUnit  = Editor.getIndentUnit(),
+                indentUnit  = Editor.getSpaceUnits(),
                 i           = 0;
             
             char = stream.next();
