@@ -3,7 +3,8 @@ An extension for [Brackets](https://github.com/adobe/brackets/) to show indent g
 
 ### How to Install
 1. Select **Brackets > File > Install Extension...**
-2. Type or paste https://github.com/lkcampbell/brackets-indent-guides into the dialog box
+2. Paste https://github.com/lkcampbell/brackets-indent-guides
+into Extension URL field.
 3. Click on the **Install** button.
 
 ### How to Use Extension
