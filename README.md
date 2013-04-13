@@ -9,7 +9,7 @@ into Extension URL field.
 
 ### How to Use Extension
 Toggle the extension with **Brackets > View > Toggle Indent Guides** or use the
-shortcut keys which are **Ctrl-Alt-I** on Windows and **Command-Alt-I** on Mac.
+shortcut key which is **Ctrl-Alt-I** on Windows and **Command-Alt-I** on Mac.
 
 ### License
 MIT-licensed -- see `main.js` for details.
