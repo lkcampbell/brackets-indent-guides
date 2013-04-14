@@ -11,6 +11,11 @@ into Extension URL field.
 Toggle the extension with **Brackets > View > Toggle Indent Guides** or use the
 shortcut key which is **Ctrl-Alt-I** on Windows and **Command-Alt-I** on Mac.
 
+### Known Issues
+**Empty lines do not display indent guides:** This is by design. Empty lines
+have no indentation; therefore, they have no indent guides. This is the most
+accurate way to display document indentation information.
+
 ### License
 MIT-licensed -- see `main.js` for details.
 
