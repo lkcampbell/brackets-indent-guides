@@ -24,6 +24,9 @@ solve this problem, I will implement an option to display a "no-gap" version
 of indent guides.  If you have any solution ideas, please post them in the
 issue list.
 
+### Roadmap
+* Show indent guides inside of Inline Editors
+
 ### License
 MIT-licensed -- see `main.js` for details.
 
