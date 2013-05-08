@@ -33,6 +33,7 @@ define(function (require, exports, module) {
         Menus               = brackets.getModule("command/Menus"),
         Editor              = brackets.getModule("editor/Editor").Editor,
         EditorManager       = brackets.getModule("editor/EditorManager"),
+        AppInit             = brackets.getModule("utils/AppInit"),
         CommandManager      = brackets.getModule("command/CommandManager"),
         DocumentManager     = brackets.getModule("document/DocumentManager"),
         ExtensionUtils      = brackets.getModule("utils/ExtensionUtils");
@@ -102,21 +103,29 @@ define(function (require, exports, module) {
         _prefs.setValue("enabled", command.getChecked());
         _updateOverlay();
     }
-    
-    // --- Make sure to update the Indent Guides when changing documents
-    $(DocumentManager).on("currentDocumentChange", _updateOverlay);
-    
-    // --- Load overlay style sheet ---
-    ExtensionUtils.loadStyleSheet(module, "main.css");
-    
-    // --- Register command ---
-    CommandManager.register(COMMAND_NAME, COMMAND_ID, _toggleIndentGuides);
-    
-    // --- Add to View menu ---
-    if (_viewMenu) {
-        _viewMenu.addMenuItem(COMMAND_ID, SHORTCUT_KEY);
-    }
-    
-    // --- Apply preferences ---
-    CommandManager.get(COMMAND_ID).setChecked(_prefs.getValue("enabled"));
+
+    // --- Initialize Extension ---
+    AppInit.appReady(function () {
+        var isEnabled = _prefs.getValue("enabled");
+        
+        // --- Register command ---
+        CommandManager.register(COMMAND_NAME, COMMAND_ID, _toggleIndentGuides);
+        
+        // --- Add to View menu ---
+        if (_viewMenu) {
+            _viewMenu.addMenuItem(COMMAND_ID, SHORTCUT_KEY);
+        }
+        
+        // Apply user preferences
+        CommandManager.get(COMMAND_ID).setChecked(isEnabled);
+        
+        // Add event listeners for updating the indent guides
+        $(DocumentManager).on("currentDocumentChange", _updateOverlay);
+        
+        // Load the indent guide CSS -- when done, update the overlay
+        ExtensionUtils.loadStyleSheet(module, "main.css")
+            .done(function () {
+                _updateOverlay();
+            });
+    });
 });
