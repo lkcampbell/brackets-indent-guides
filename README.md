@@ -31,4 +31,4 @@ issue list.
 MIT-licensed -- see `main.js` for details.
 
 ### Compatibility
-Brackets Sprint 22 or later.
+Tested on Brackets Sprint 22 and later, Windows 7.
