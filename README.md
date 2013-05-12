@@ -25,6 +25,7 @@ of indent guides.  If you have any solution ideas, please post them in the
 issue list.
 
 ### Roadmap
+* Set indent guide height to the cursor height
 * Show indent guides inside of Inline Editors
 
 ### License
