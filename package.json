@@ -1,0 +1,22 @@
+{
+    "name": "brackets-indent-guides",
+    "title": "Indent Guides",
+    "version": "1.0.0",
+    "description": "Show indent guides in the code editor.",
+    "homepage": "https://github.com/lkcampbell/brackets-indent-guides",
+    "author": "Lance Campbell lkcampbell@gmail.com (https://github.com/lkcampbell)",
+    "license": "MIT",
+    "categories":"editing",
+    "keywords": [
+        "indent",
+        "guide"
+    ],
+    "files": [
+        "main.css",
+        "main.js",
+        "README.md"
+    ],
+    "engines": {
+        "brackets": ">=0.22.0"
+    }
+}
