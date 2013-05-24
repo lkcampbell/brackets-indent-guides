@@ -1,13 +1,6 @@
 .cm-lkcampbell-indent-guides {
     position: relative;
-}
-
-.cm-lkcampbell-indent-guides:before {
-    content: "";
-    position: absolute;
-    display: block;
-    top: 0;
-    height: 2.8ex;
+    background-image: url(indent-guide.svg);
+    background-repeat: repeat-y;
     width: 1px;
-    background-color: rgba(128, 128, 128, 0.5);
 }
