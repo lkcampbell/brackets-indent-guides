@@ -48,30 +48,37 @@ define(function (require, exports, module) {
         _prefs      = PreferencesManager.getPreferenceStorage(module, _defPrefs),
         _viewMenu   = Menus.getMenu(Menus.AppMenuBar.VIEW_MENU);
     
+    // --- Helper Functions ---
+    function _repeatChar(char, count) {
+        var arr = [];
+        arr.length = count + 1;
+        return arr.join(char);
+    }
+    
     // Overlay that assigns Indent Guides style to all indents in the document
     var _indentGuidesOverlay = {
         token: function (stream, state) {
             var char        = "",
-                indentUnit  = Editor.getSpaceUnits(),
-                i           = 0;
+                tabSpaces   = "",
+                result;
             
             char = stream.next();
             
             if (char === "\t") {
                 return "lkcampbell-indent-guides";
-            } else if (char === " ") {
-                for (i = 0; i < (indentUnit - 1); i++) {
-                    char = stream.next();
-                    if (char === "\t") {
-                        return "lkcampbell-indent-guides";
-                    } else if (char !== " ") {
-                        stream.skipToEnd();
-                        return null;
-                    }
-                }
+            }
+            
+            if (char !== " ") {
+                stream.skipToEnd();
+                return null;
+            }
+            
+            tabSpaces = _repeatChar(" ", Editor.getSpaceUnits() - 1);
+            result = stream.match(tabSpaces);
+            
+            if (result) {
                 return "lkcampbell-indent-guides";
             } else {
-                stream.skipToEnd();
                 return null;
             }
         },
