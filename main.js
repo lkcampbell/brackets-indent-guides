@@ -59,8 +59,7 @@ define(function (require, exports, module) {
     var _indentGuidesOverlay = {
         token: function (stream, state) {
             var char        = "",
-                tabSpaces   = "",
-                result;
+                tabSpaces   = "";
             
             char = stream.next();
             
@@ -74,9 +73,8 @@ define(function (require, exports, module) {
             }
             
             tabSpaces = _repeatChar(" ", Editor.getSpaceUnits() - 1);
-            result = stream.match(tabSpaces);
             
-            if (result) {
+            if (stream.match(tabSpaces)) {
                 return "lkcampbell-indent-guides";
             } else {
                 return null;
