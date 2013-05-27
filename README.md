@@ -2,10 +2,11 @@
 An extension for [Brackets](https://github.com/adobe/brackets/) to show indent guides in the code editor.
 
 ### How to Install
-1. Select **Brackets > File > Install Extension...**
-2. Paste https://github.com/lkcampbell/brackets-indent-guides
+1. Select **Brackets > File > Extension Manager...**
+2. Click on **Install from URL...**
+3. Paste https://github.com/lkcampbell/brackets-indent-guides
 into Extension URL field.
-3. Click on the **Install** button.
+4. Click on the **Install** button.
 
 ### How to Use Extension
 Toggle the extension with **Brackets > View > Toggle Indent Guides** or use the
