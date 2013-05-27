@@ -71,7 +71,7 @@ define(function (require, exports, module) {
                 stream.skipToEnd();
                 return null;
             }
-
+            
             isTabStart  = (stream.column() % Editor.getSpaceUnits()) ? false : true;
             if ((char === " ") && (isTabStart)) {
                 return "lkcampbell-indent-guides";
@@ -81,7 +81,7 @@ define(function (require, exports, module) {
         },
         flattenSpans: false
     };
-
+    
     // --- Event handlers ---
     function _updateOverlay() {
         var command     = CommandManager.get(COMMAND_ID),
@@ -107,7 +107,7 @@ define(function (require, exports, module) {
         _prefs.setValue("enabled", command.getChecked());
         _updateOverlay();
     }
-
+    
     // --- Initialize Extension ---
     AppInit.appReady(function () {
         var isEnabled = _prefs.getValue("enabled");
