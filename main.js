@@ -40,7 +40,7 @@ define(function (require, exports, module) {
     
     // --- Constants ---
     var COMMAND_NAME    = "Toggle Indent Guides",
-        COMMAND_ID      = "lkcampbell.toggle-indent-guides",
+        COMMAND_ID      = "lkcampbell-toggle-indent-guides",
         SHORTCUT_KEY    = "Ctrl-Alt-I";
     
     // --- Local variables ---
