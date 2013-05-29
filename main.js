@@ -48,17 +48,11 @@ define(function (require, exports, module) {
         _prefs      = PreferencesManager.getPreferenceStorage(module, _defPrefs),
         _viewMenu   = Menus.getMenu(Menus.AppMenuBar.VIEW_MENU);
     
-    // --- Helper Functions ---
-    function _repeatChar(char, count) {
-        var arr = [];
-        arr.length = count + 1;
-        return arr.join(char);
-    }
-    
     // Overlay that assigns Indent Guides style to all indents in the document
     var _indentGuidesOverlay = {
         token: function (stream, state) {
             var char        = "",
+                spaceUnits  = 0,
                 isTabStart  = false;
             
             char = stream.next();
@@ -72,7 +66,9 @@ define(function (require, exports, module) {
                 return null;
             }
             
-            isTabStart  = (stream.column() % Editor.getSpaceUnits()) ? false : true;
+            spaceUnits = Editor.getSpaceUnits();
+            isTabStart = (stream.column() % spaceUnits) ? false : true;
+            
             if ((char === " ") && (isTabStart)) {
                 return "lkcampbell-indent-guides";
             } else {
