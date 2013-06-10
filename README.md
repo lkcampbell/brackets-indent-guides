@@ -9,8 +9,7 @@ into Extension URL field.
 4. Click on the **Install** button.
 
 ### How to Use Extension
-Toggle the extension with **Brackets > View > Toggle Indent Guides** or use the
-shortcut key which is **Ctrl-Alt-I** on Windows and **Command-Alt-I** on Mac.
+Toggle the extension with **Brackets > View > Toggle Indent Guides**.
 
 ### Known Issues
 **Empty lines do not display indent guides**

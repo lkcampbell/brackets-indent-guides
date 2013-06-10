@@ -40,8 +40,7 @@ define(function (require, exports, module) {
     
     // --- Constants ---
     var COMMAND_NAME    = "Toggle Indent Guides",
-        COMMAND_ID      = "lkcampbell.toggleIndentGuides",
-        SHORTCUT_KEY    = "Ctrl-Alt-I";
+        COMMAND_ID      = "lkcampbell.toggleIndentGuides";
     
     // --- Local variables ---
     var _defPrefs   = { enabled: false },
@@ -113,7 +112,7 @@ define(function (require, exports, module) {
         
         // --- Add to View menu ---
         if (_viewMenu) {
-            _viewMenu.addMenuItem(COMMAND_ID, SHORTCUT_KEY);
+            _viewMenu.addMenuItem(COMMAND_ID);
         }
         
         // Apply user preferences
