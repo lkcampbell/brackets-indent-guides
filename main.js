@@ -39,7 +39,7 @@ define(function (require, exports, module) {
         ExtensionUtils      = brackets.getModule("utils/ExtensionUtils");
     
     // --- Constants ---
-    var COMMAND_NAME    = "Toggle Indent Guides",
+    var COMMAND_NAME    = "Indent Guides",
         COMMAND_ID      = "lkcampbell.toggleIndentGuides";
     
     // --- Local variables ---

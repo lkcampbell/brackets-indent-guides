@@ -9,7 +9,7 @@ into Extension URL field.
 4. Click on the **Install** button.
 
 ### How to Use Extension
-Toggle the extension with **Brackets > View > Toggle Indent Guides**.
+Toggle the extension with **Brackets > View > Indent Guides**.
 
 ### Known Issues
 **Empty lines do not display indent guides**
