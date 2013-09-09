@@ -73,8 +73,7 @@ define(function (require, exports, module) {
             } else {
                 return null;
             }
-        },
-        flattenSpans: false
+        }
     };
     
     // --- Event handlers ---
