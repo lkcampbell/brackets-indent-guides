@@ -5,6 +5,9 @@
     "description": "Show indent guides in the code editor.",
     "homepage": "https://github.com/lkcampbell/brackets-indent-guides",
     "author": "Lance Campbell lkcampbell@gmail.com (https://github.com/lkcampbell)",
+    "contributors": [
+        "Kenneth Sundqvist <eviloatmeal@gmail.com> (https://github.com/EvilOatmeal)"
+    ],
     "license": "MIT",
     "categories":"editing",
     "keywords": [
