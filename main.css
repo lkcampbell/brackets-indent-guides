@@ -1,4 +1,4 @@
-.cm-lkcampbell-indent-guides:not(:first-child) {
+.cm-lkcampbell-indent-guides {
     position: relative;
     background-image: url(indent-guide.svg);
     background-repeat: repeat-y;

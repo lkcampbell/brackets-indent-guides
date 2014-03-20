@@ -1,6 +1,6 @@
 /*
  * The MIT License (MIT)
- * Copyright (c) 2013 Lance Campbell. All rights reserved.
+ * Copyright (c) 2013-2014 Lance Campbell. All rights reserved.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -28,7 +28,7 @@
 define(function (require, exports, module) {
     "use strict";
     
-    // --- Required modules ---
+    // Brackets modules
     var PreferencesManager  = brackets.getModule("preferences/PreferencesManager"),
         Menus               = brackets.getModule("command/Menus"),
         Editor              = brackets.getModule("editor/Editor").Editor,
@@ -38,17 +38,18 @@ define(function (require, exports, module) {
         DocumentManager     = brackets.getModule("document/DocumentManager"),
         ExtensionUtils      = brackets.getModule("utils/ExtensionUtils");
     
-    // --- Constants ---
+    // Constants
     var COMMAND_NAME    = "Indent Guides",
         COMMAND_ID      = "lkcampbell.toggleIndentGuides";
     
-    // --- Local variables ---
-    var _defPrefs   = { enabled: false },
-        _prefs      = PreferencesManager.getPreferenceStorage(module, _defPrefs),
-        _viewMenu   = Menus.getMenu(Menus.AppMenuBar.VIEW_MENU);
+    var enabled = false,
+        prefs   = PreferencesManager.getExtensionPrefs("brackets-indent-guides");
+
+    // Set up extension preferences
+    prefs.definePreference("enabled", "boolean", false);
     
-    // Overlay that assigns Indent Guides style to all indents in the document
-    var _indentGuidesOverlay = {
+    // CodeMirror overlay code
+    var indentGuidesOverlay = {
         token: function (stream, state) {
             var char        = "",
                 spaceUnits  = 0,
@@ -77,54 +78,52 @@ define(function (require, exports, module) {
         flattenSpans: false
     };
     
-    // --- Event handlers ---
-    function _updateOverlay() {
-        var command     = CommandManager.get(COMMAND_ID),
-            fullEditor  = null,
-            codeMirror  = null;
+    function updateUI() {
+        var editor  = EditorManager.getCurrentFullEditor(),
+            cm      = editor ? editor._codeMirror : null;
         
-        fullEditor = EditorManager.getCurrentFullEditor();
-        codeMirror = fullEditor ? fullEditor._codeMirror : null;
-        
-        if (codeMirror) {
-            codeMirror.removeOverlay(_indentGuidesOverlay);
-            if (command.getChecked()) {
-                codeMirror.addOverlay(_indentGuidesOverlay);
+        if (cm) {
+            cm.removeOverlay(indentGuidesOverlay);
+            if (enabled) {
+                cm.addOverlay(indentGuidesOverlay);
             }
-            codeMirror.refresh();
+            cm.refresh();
+        } else {
+            console.error("Indent Guides extension failed to find CodeMirror Module.");
         }
+           
+        CommandManager.get(COMMAND_ID).setChecked(enabled);
     }
     
-    function _toggleIndentGuides() {
-        var command = CommandManager.get(COMMAND_ID);
-        
-        command.setChecked(!command.getChecked());
-        _prefs.setValue("enabled", command.getChecked());
-        _updateOverlay();
+    // Event handlers
+    function handleToggleGuides() {
+        enabled = !enabled;
+        prefs.set("enabled", enabled);
+        prefs.save();
+        // Preference change listener takes care of updating UI
     }
     
-    // --- Initialize Extension ---
+    // Initialize extension
     AppInit.appReady(function () {
-        var isEnabled = _prefs.getValue("enabled");
+        // Apply preferences
+        enabled = prefs.get("enabled");
         
-        // --- Register command ---
-        CommandManager.register(COMMAND_NAME, COMMAND_ID, _toggleIndentGuides);
+        // Register command and add to menu
+        CommandManager.register(COMMAND_NAME, COMMAND_ID, handleToggleGuides);
+        Menus.getMenu(Menus.AppMenuBar.VIEW_MENU).addMenuItem(COMMAND_ID);
         
-        // --- Add to View menu ---
-        if (_viewMenu) {
-            _viewMenu.addMenuItem(COMMAND_ID);
-        }
+        // Set up event listeners
+        prefs.on("change", "enabled", function () {
+            enabled = prefs.get("enabled");
+            updateUI();
+        });
         
-        // Apply user preferences
-        CommandManager.get(COMMAND_ID).setChecked(isEnabled);
+        $(DocumentManager).on("currentDocumentChange", updateUI);
         
-        // Add event listeners for updating the indent guides
-        $(DocumentManager).on("currentDocumentChange", _updateOverlay);
-        
-        // Load the indent guide CSS -- when done, update the overlay
+        // Load the indent guide CSS -- when done, update the UI
         ExtensionUtils.loadStyleSheet(module, "main.css")
             .done(function () {
-                _updateOverlay();
+                updateUI();
             });
     });
 });
