@@ -11,12 +11,16 @@ Toggle the extension with **View > Indent Guides**.
 
 ### Extension Preferences
 
-**`brackets-indent-guides.enabled`** *(boolean)*:
-Determines if Indent Guides will be enabled.
+**`brackets-indent-guides.enabled`** *(boolean)*<br/>
+If the value of this preference is `true`, Indent Guides will be visible.
+If the value is `false`, Indent Guides will be hidden.
 
+**`brackets-indent-guides.hideFirst`** *(boolean)*<br/>
+If the value of this preference is `true` the first Indent Guide will not be drawn.
+This is useful if you are using a Brackets Theme that has a vertical border separating
+the line numbers from the code.  Set the value to `false` to draw all Indent Guides.
 
 For more information on setting preferences see [How to Use Brackets - Preferences](https://github.com/adobe/brackets/wiki/How-to-Use-Brackets#preferences)
-
 
 ### Known Issues
 **Empty lines do not display indent guides**

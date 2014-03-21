@@ -42,20 +42,29 @@ define(function (require, exports, module) {
     var COMMAND_NAME    = "Indent Guides",
         COMMAND_ID      = "lkcampbell.toggleIndentGuides";
     
-    var enabled = false,
-        prefs   = PreferencesManager.getExtensionPrefs("brackets-indent-guides");
+    var enabled     = false,
+        hideFirst   = false,
+        prefs       = PreferencesManager.getExtensionPrefs("brackets-indent-guides");
 
     // Set up extension preferences
     prefs.definePreference("enabled", "boolean", false);
+    prefs.definePreference("hideFirst", "boolean", false);
     
     // CodeMirror overlay code
     var indentGuidesOverlay = {
         token: function (stream, state) {
             var char        = "",
+                colNum      = 0,
                 spaceUnits  = 0,
                 isTabStart  = false;
             
-            char = stream.next();
+            char    = stream.next();
+            colNum  = stream.column();
+            
+            // Check for "hide first guide" preference
+            if ((hideFirst) && (colNum === 0)) {
+                return null;
+            }
             
             if (char === "\t") {
                 return "lkcampbell-indent-guides";
@@ -67,7 +76,7 @@ define(function (require, exports, module) {
             }
             
             spaceUnits = Editor.getSpaceUnits();
-            isTabStart = (stream.column() % spaceUnits) ? false : true;
+            isTabStart = (colNum % spaceUnits) ? false : true;
             
             if ((char === " ") && (isTabStart)) {
                 return "lkcampbell-indent-guides";
@@ -78,20 +87,25 @@ define(function (require, exports, module) {
         flattenSpans: false
     };
     
+    function applyPreferences() {
+        enabled     = prefs.get("enabled");
+        hideFirst   = prefs.get("hideFirst");
+    }
+    
     function updateUI() {
         var editor  = EditorManager.getCurrentFullEditor(),
             cm      = editor ? editor._codeMirror : null;
         
+        // Update CodeMirror overlay if editor is available
         if (cm) {
             cm.removeOverlay(indentGuidesOverlay);
             if (enabled) {
                 cm.addOverlay(indentGuidesOverlay);
             }
             cm.refresh();
-        } else {
-            console.error("Indent Guides extension failed to find CodeMirror Module.");
         }
-           
+        
+        // Update menu
         CommandManager.get(COMMAND_ID).setChecked(enabled);
     }
     
@@ -100,29 +114,26 @@ define(function (require, exports, module) {
         enabled = !enabled;
         prefs.set("enabled", enabled);
         prefs.save();
-        // Preference change listener takes care of updating UI
     }
     
     // Initialize extension
     AppInit.appReady(function () {
-        // Apply preferences
-        enabled = prefs.get("enabled");
-        
-        // Register command and add to menu
+        // Register toggle command and add it to View menu
         CommandManager.register(COMMAND_NAME, COMMAND_ID, handleToggleGuides);
         Menus.getMenu(Menus.AppMenuBar.VIEW_MENU).addMenuItem(COMMAND_ID);
         
         // Set up event listeners
         prefs.on("change", "enabled", function () {
-            enabled = prefs.get("enabled");
+            applyPreferences();
             updateUI();
         });
         
         $(DocumentManager).on("currentDocumentChange", updateUI);
         
-        // Load the indent guide CSS -- when done, update the UI
+        // Load style sheet, then update the UI
         ExtensionUtils.loadStyleSheet(module, "main.css")
             .done(function () {
+                applyPreferences();
                 updateUI();
             });
     });
