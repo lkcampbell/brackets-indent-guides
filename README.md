@@ -7,7 +7,16 @@ An extension for [Brackets](https://github.com/adobe/brackets/) to show indent g
 3. Click on the **Install** button.
 
 ### How to Use Extension
-Toggle the extension with **Brackets > View > Indent Guides**.
+Toggle the extension with **View > Indent Guides**.
+
+### Extension Preferences
+
+**`brackets-indent-guides.enabled`** *(boolean)*:
+Determines if Indent Guides will be enabled.
+
+
+For more information on setting preferences see [How to Use Brackets - Preferences](https://github.com/adobe/brackets/wiki/How-to-Use-Brackets#preferences)
+
 
 ### Known Issues
 **Empty lines do not display indent guides**
@@ -18,7 +27,7 @@ information.
 
 There is also a practical problem.  This extension currently uses CodeMirror
 overlays, which do not have the ability to stylize empty lines.  If I can
-solve this problem, I will implement an option to display a "no-gap" version
+solve this problem, I will implement a preference to display a "no-gap" version
 of indent guides.  If you have any solution ideas, please post them in the
 issue list.
 
