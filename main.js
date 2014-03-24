@@ -44,11 +44,14 @@ define(function (require, exports, module) {
     
     var enabled     = false,
         hideFirst   = false,
+        guideStyle  = "solid",
+        styleClass  = "lkcampbell-indent-guides",
         prefs       = PreferencesManager.getExtensionPrefs("brackets-indent-guides");
 
-    // Set up extension preferences
+    // Define extension preferences
     prefs.definePreference("enabled", "boolean", false);
     prefs.definePreference("hideFirst", "boolean", false);
+    prefs.definePreference("guideStyle", "string", "solid");
     
     // CodeMirror overlay code
     var indentGuidesOverlay = {
@@ -67,7 +70,7 @@ define(function (require, exports, module) {
             }
             
             if (char === "\t") {
-                return "lkcampbell-indent-guides";
+                return styleClass;
             }
             
             if (char !== " ") {
@@ -79,7 +82,7 @@ define(function (require, exports, module) {
             isTabStart = (colNum % spaceUnits) ? false : true;
             
             if ((char === " ") && (isTabStart)) {
-                return "lkcampbell-indent-guides";
+                return styleClass;
             } else {
                 return null;
             }
@@ -90,6 +93,18 @@ define(function (require, exports, module) {
     function applyPreferences() {
         enabled     = prefs.get("enabled");
         hideFirst   = prefs.get("hideFirst");
+        guideStyle  = prefs.get("guideStyle");
+        
+        switch (guideStyle) {
+        case "solid":
+            styleClass = "lkcampbell-indent-guides";
+            break;
+        case "dotted":
+            styleClass = "lkcampbell-indent-guides-dotted";
+            break;
+        default:
+            styleClass = "lkcampbell-indent-guides";
+        }
     }
     
     function updateUI() {
@@ -112,8 +127,7 @@ define(function (require, exports, module) {
     // Event handlers
     function handleToggleGuides() {
         enabled = !enabled;
-        prefs.set("enabled", enabled);
-        prefs.save();
+        prefs.setValueAndSave("enabled", enabled);
     }
     
     // Initialize extension

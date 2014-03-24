@@ -20,6 +20,9 @@ If the value of this preference is `true` the first Indent Guide will not be dra
 This is useful if you are using a Brackets Theme that has a vertical border separating
 the line numbers from the code.  Set the value to `false` to draw all Indent Guides.
 
+**`brackets-indent-guides.guideStyle`** *(string)*<br/>
+This value determines the style of the guide: "solid" or "dotted".
+
 For more information on setting preferences see [How to Use Brackets - Preferences](https://github.com/adobe/brackets/wiki/How-to-Use-Brackets#preferences)
 
 ### Known Issues
