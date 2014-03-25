@@ -127,7 +127,8 @@ define(function (require, exports, module) {
     // Event handlers
     function handleToggleGuides() {
         enabled = !enabled;
-        prefs.setValueAndSave("enabled", enabled);
+        prefs.set("enabled", enabled);
+        prefs.save();
     }
     
     // Initialize extension
