@@ -138,7 +138,7 @@ define(function (require, exports, module) {
         Menus.getMenu(Menus.AppMenuBar.VIEW_MENU).addMenuItem(COMMAND_ID);
         
         // Set up event listeners
-        prefs.on("change", "enabled", function () {
+        prefs.on("change", function () {
             applyPreferences();
             updateUI();
         });
