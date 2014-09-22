@@ -35,23 +35,70 @@ define(function (require, exports, module) {
         EditorManager       = brackets.getModule("editor/EditorManager"),
         AppInit             = brackets.getModule("utils/AppInit"),
         CommandManager      = brackets.getModule("command/CommandManager"),
-        DocumentManager     = brackets.getModule("document/DocumentManager"),
-        ExtensionUtils      = brackets.getModule("utils/ExtensionUtils");
+        DocumentManager     = brackets.getModule("document/DocumentManager");
+    
+    // SVG support
+    var Snap = require("snap.svg-min");
     
     // Constants
     var COMMAND_NAME    = "Indent Guides",
-        COMMAND_ID      = "lkcampbell.toggleIndentGuides";
+        COMMAND_ID      = "lkcampbell.toggleIndentGuides",
+        GUIDE_CLASS     = "lkcampbell-indent-guides";
     
+    var guideSVG    = null,
+        guideRect   = null;
+    
+    // Define extension preferences
     var enabled     = false,
         hideFirst   = false,
+        guideColor  = "rgba(128, 128, 128, 0.5)",
         guideStyle  = "solid",
-        styleClass  = "lkcampbell-indent-guides",
         prefs       = PreferencesManager.getExtensionPrefs("brackets-indent-guides");
-
-    // Define extension preferences
-    prefs.definePreference("enabled", "boolean", false);
-    prefs.definePreference("hideFirst", "boolean", false);
-    prefs.definePreference("guideStyle", "string", "solid");
+    
+    prefs.definePreference("enabled",       "boolean",  enabled);
+    prefs.definePreference("hideFirst",     "boolean",  hideFirst);
+    prefs.definePreference("guideColor",    "string",   guideColor);
+    prefs.definePreference("guideStyle",    "string",   guideStyle);
+    
+    function updateStyleRules() {
+        var svgStr  = "",
+            imgStr  = "",
+            cssStr  = "";
+        
+        if ($("#lkcampbell-indent-guides-css").length) {
+            $("#lkcampbell-indent-guides-css").remove();
+        }
+        
+        svgStr  = window.btoa(guideSVG.toString());
+        imgStr  = "url(data:image/svg+xml;base64," + svgStr + ")";
+        
+        cssStr =    ".cm-lkcampbell-indent-guides { ";
+        cssStr +=   "position: relative; ";
+        cssStr +=   "background-repeat: repeat-y; ";
+        cssStr +=   "background-image: " + imgStr + "; ";
+        cssStr +=   "}";
+        
+        $("<style id='lkcampbell-indent-guides-css'>").text(cssStr).appendTo("head");
+    }
+    
+    function setGuideColor(color) {
+        guideRect.attr({ style: "fill:" + color + ";" });
+        updateStyleRules();
+    }
+    
+    function setGuideStyle(style) {
+        switch (style) {
+        case "solid":
+            guideSVG.attr({ height: "1px" });
+            break;
+        case "dotted":
+            guideSVG.attr({ height: "2px" });
+            break;
+        default:
+        }
+        
+        updateStyleRules();
+    }
     
     // CodeMirror overlay code
     var indentGuidesOverlay = {
@@ -70,7 +117,7 @@ define(function (require, exports, module) {
             }
             
             if (char === "\t") {
-                return styleClass;
+                return GUIDE_CLASS;
             }
             
             if (char !== " ") {
@@ -82,7 +129,7 @@ define(function (require, exports, module) {
             isTabStart = (colNum % spaceUnits) ? false : true;
             
             if ((char === " ") && (isTabStart)) {
-                return styleClass;
+                return GUIDE_CLASS;
             } else {
                 return null;
             }
@@ -93,18 +140,11 @@ define(function (require, exports, module) {
     function applyPreferences() {
         enabled     = prefs.get("enabled");
         hideFirst   = prefs.get("hideFirst");
+        guideColor  = prefs.get("guideColor");
         guideStyle  = prefs.get("guideStyle");
         
-        switch (guideStyle) {
-        case "solid":
-            styleClass = "lkcampbell-indent-guides";
-            break;
-        case "dotted":
-            styleClass = "lkcampbell-indent-guides-dotted";
-            break;
-        default:
-            styleClass = "lkcampbell-indent-guides";
-        }
+        setGuideColor(guideColor);
+        setGuideStyle(guideStyle);
     }
     
     function updateUI() {
@@ -116,6 +156,7 @@ define(function (require, exports, module) {
             cm.removeOverlay(indentGuidesOverlay);
             if (enabled) {
                 cm.addOverlay(indentGuidesOverlay);
+                updateStyleRules();
             }
             cm.refresh();
         }
@@ -133,7 +174,7 @@ define(function (require, exports, module) {
     
     // Initialize extension
     AppInit.appReady(function () {
-        // Register toggle command and add it to View menu
+        // Register command and add to menu
         CommandManager.register(COMMAND_NAME, COMMAND_ID, handleToggleGuides);
         Menus.getMenu(Menus.AppMenuBar.VIEW_MENU).addMenuItem(COMMAND_ID);
         
@@ -145,11 +186,15 @@ define(function (require, exports, module) {
         
         $(DocumentManager).on("currentDocumentChange", updateUI);
         
-        // Load style sheet, then update the UI
-        ExtensionUtils.loadStyleSheet(module, "main.css")
-            .done(function () {
-                applyPreferences();
-                updateUI();
-            });
+        // Initialize guide SVG
+        guideSVG    = new Snap();
+        guideRect   = guideSVG.rect(0, 0, 1, 1);
+        
+        guideSVG.attr({ height: "1px", width: "1px" });
+        guideRect.attr({ style: "fill:" + guideColor + ";" });
+        
+        // Apply preferences and draw indent guides
+        applyPreferences();
+        updateUI();
     });
 });
