@@ -81,25 +81,6 @@ define(function (require, exports, module) {
         $("<style id='lkcampbell-indent-guides-css'>").text(cssStr).appendTo("head");
     }
     
-    function setGuideColor(color) {
-        guideRect.attr({ style: "fill:" + color + ";" });
-        updateStyleRules();
-    }
-    
-    function setGuideStyle(style) {
-        switch (style) {
-        case "solid":
-            guideSVG.attr({ height: "1px" });
-            break;
-        case "dotted":
-            guideSVG.attr({ height: "2px" });
-            break;
-        default:
-        }
-        
-        updateStyleRules();
-    }
-    
     // CodeMirror overlay code
     var indentGuidesOverlay = {
         token: function (stream, state) {
@@ -143,8 +124,21 @@ define(function (require, exports, module) {
         guideColor  = prefs.get("guideColor");
         guideStyle  = prefs.get("guideStyle");
         
-        setGuideColor(guideColor);
-        setGuideStyle(guideStyle);
+        // Set Guide Color
+        guideRect.attr({ style: "fill:" + guideColor + ";" });
+        
+        // Set Guide Line Style
+        switch (guideStyle) {
+        case "solid":
+            guideSVG.attr({ height: "1px" });
+            break;
+        case "dotted":
+            guideSVG.attr({ height: "2px" });
+            break;
+        default:
+        }
+        
+        updateStyleRules();
     }
     
     function updateUI() {
