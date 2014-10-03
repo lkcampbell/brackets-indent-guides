@@ -28,18 +28,17 @@ the line numbers from the code.  Set the value to `false` to draw all Indent Gui
 
 For more information on setting preferences see [How to Use Brackets - Preferences](https://github.com/adobe/brackets/wiki/How-to-Use-Brackets#preferences)
 
-### Known Issues
-**Empty lines do not display indent guides**
+### Code Challenges
 
-This is by design. Empty lines have no indentation; therefore, they have no
-indent guides. This is the most accurate way to display document indentation
-information.
+Code challenges are closed issues and enhancement requests that I have attempted
+to resolve without success. Maybe you have an idea that can help?
 
-There is also a practical problem.  This extension currently uses CodeMirror
-overlays, which do not have the ability to stylize empty lines.  If I can
-solve this problem, I will implement a preference to display a "no-gap" version
-of indent guides.  If you have any solution ideas, please post them in the
-issue list.
+Just look for the `code challenge` label in the closed issues list. Post a comment
+on the issue and we can discuss your solution ideas. Here is a list of the current
+code challenges for this extension:
+
+1. [Empty lines do not display indent guides](https://github.com/lkcampbell/brackets-indent-guides/issues/16)
+1. [Show only one indent guide in hanging indent](https://github.com/lkcampbell/brackets-indent-guides/issues/11)
 
 ### License
 MIT-licensed -- see `main.js` for details.
