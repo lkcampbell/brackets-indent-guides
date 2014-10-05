@@ -40,6 +40,7 @@ code challenges for this extension:
 1. [Empty lines do not display indent guides](https://github.com/lkcampbell/brackets-indent-guides/issues/16)
 1. [Show only one indent guide in hanging indent](https://github.com/lkcampbell/brackets-indent-guides/issues/11)
 1. [Indent guides make scrolling less performant](https://github.com/lkcampbell/brackets-indent-guides/issues/12)
+1. [Only show indent guides when text is present on line](https://github.com/lkcampbell/brackets-indent-guides/issues/15)
 
 ### License
 MIT-licensed -- see `main.js` for details.
