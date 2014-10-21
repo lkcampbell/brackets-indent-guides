@@ -15,9 +15,9 @@
         "guide"
     ],
     "files": [
-        "main.css",
         "main.js",
-        "README.md"
+        "README.md",
+        "snap.svg-min.js"
     ],
     "engines": {
         "brackets": ">=0.37.0"
