@@ -35,7 +35,7 @@ define(function (require, exports, module) {
         EditorManager       = brackets.getModule("editor/EditorManager"),
         AppInit             = brackets.getModule("utils/AppInit"),
         CommandManager      = brackets.getModule("command/CommandManager"),
-        DocumentManager     = brackets.getModule("document/DocumentManager");
+        MainViewManager     = brackets.getModule("view/MainViewManager");
     
     // SVG support
     var Snap = require("snap.svg-min");
@@ -178,7 +178,7 @@ define(function (require, exports, module) {
             updateUI();
         });
         
-        $(DocumentManager).on("currentDocumentChange", updateUI);
+        $(MainViewManager).on("currentFileChange", updateUI);
         
         // Initialize guide SVG
         guideSVG    = new Snap();
