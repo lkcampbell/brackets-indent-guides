@@ -178,7 +178,7 @@ define(function (require, exports, module) {
             updateUI();
         });
         
-        $(MainViewManager).on("currentFileChange", updateUI);
+        MainViewManager.on("currentFileChange", updateUI);
         
         // Initialize guide SVG
         guideSVG    = new Snap();
