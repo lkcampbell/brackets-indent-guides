@@ -28,6 +28,19 @@ the line numbers from the code.  Set the value to `false` to draw all Indent Gui
 
 For more information on setting preferences see [How to Use Brackets - Preferences](https://github.com/adobe/brackets/wiki/How-to-Use-Brackets#preferences)
 
+### Custom Key Bindings
+
+If you would like to add a customized keyboard shortcut to toggle indent guides,
+set your shortcut key to the following command id: `lkcampbell.toggleIndentGuides`.
+
+For example, if you want the shortcut `Ctrl-Shift-I` to toggle the indent guides,
+type the following entry into the `overrides` section of your `keyboardmap.json`
+file:
+
+`"Ctrl-Shift-I": "lkcampbell.toggleIndentGuides"`
+
+For more information on setting Custom Key Bindings see [User Key Bindings](https://github.com/adobe/brackets/wiki/User-Key-Bindings).
+
 ### Code Challenges
 
 Code challenges are closed issues and enhancement requests that I have attempted
