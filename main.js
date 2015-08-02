@@ -55,10 +55,22 @@ define(function (require, exports, module) {
         guideStyle  = "solid",
         prefs       = PreferencesManager.getExtensionPrefs("brackets-indent-guides");
     
-    prefs.definePreference("enabled",       "boolean",  enabled);
-    prefs.definePreference("hideFirst",     "boolean",  hideFirst);
-    prefs.definePreference("guideColor",    "string",   guideColor);
-    prefs.definePreference("guideStyle",    "string",   guideStyle);
+    prefs.definePreference("enabled", "boolean", enabled, {
+        description: "If the value of this preference is true, Indent Guides will be visible. If the value is false, Indent Guides will be hidden."
+    });
+    
+    prefs.definePreference("hideFirst", "boolean", hideFirst, {
+        description: "If the value of this preference is true the first Indent Guide will not be drawn."
+    });
+    
+    prefs.definePreference("guideColor", "string", guideColor, {
+        description: "The color of the indent guides. Can be any valid CSS Color value."
+    });
+    
+    prefs.definePreference("guideStyle", "string", guideStyle, {
+        description: 'This value determines the style of the guide: "solid" or "dotted".',
+        values: ["solid", "dotted"]
+    });
     
     function updateStyleRules() {
         var svgStr  = "",
