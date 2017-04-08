@@ -59,10 +59,10 @@ file:
 
 For more information on setting Custom Key Bindings see [User Key Bindings](https://github.com/adobe/brackets/wiki/User-Key-Bindings).
 
-### Code Challenge
+### Code Challenges
 
 Code challenges are closed issues and enhancement requests that I have attempted
-to resolve without success. Maybe you have an idea that can help?
+to resolve without success. Maybe you have an idea that will help?
 
 Just look for the `code challenge` label in the closed issues list. Post a comment
 on the issue and we can discuss your solution ideas. Here is a list of the current
