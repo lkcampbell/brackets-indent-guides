@@ -1,7 +1,7 @@
 {
     "name": "brackets-indent-guides",
     "title": "Indent Guides",
-    "version": "1.3.6",
+    "version": "1.3.7",
     "description": "Show indent guides in the code editor.",
     "homepage": "https://github.com/lkcampbell/brackets-indent-guides",
     "author": "Lance Campbell (https://github.com/lkcampbell)",
@@ -17,9 +17,10 @@
     "files": [
         "main.js",
         "README.md",
-        "snap.svg-min.js"
+        "snap.svg-min.js",
+        "strings.js"
     ],
     "engines": {
-        "brackets": ">=1.4.0"
+        "brackets": ">=1.8.0"
     }
 }

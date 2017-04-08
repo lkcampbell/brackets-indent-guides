@@ -35,13 +35,14 @@ define(function (require, exports, module) {
         EditorManager       = brackets.getModule("editor/EditorManager"),
         AppInit             = brackets.getModule("utils/AppInit"),
         CommandManager      = brackets.getModule("command/CommandManager"),
-        MainViewManager     = brackets.getModule("view/MainViewManager");
+        MainViewManager     = brackets.getModule("view/MainViewManager"),
+        Strings             = require("strings");
     
     // SVG support
     var Snap = require("snap.svg-min");
     
     // Constants
-    var COMMAND_NAME    = "Indent Guides",
+    var COMMAND_NAME    = Strings.COMMAND_NAME,
         COMMAND_ID      = "lkcampbell.toggleIndentGuides",
         GUIDE_CLASS     = "lkcampbell-indent-guides";
     
