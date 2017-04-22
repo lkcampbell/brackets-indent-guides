@@ -28,7 +28,7 @@
 define({
 	COMMAND_NAME: "Einzugshilfslinien",
 	DESCRIPTION_ENABLED: "Entscheidet, ob die Einzugshilfslinien angezeigt werden.",
-	DESCRIPTION_HIDE_FIRST: "Entscheidet, ob die erste Einzugshilfslinien angezeigt wird.",
+	DESCRIPTION_HIDE_FIRST: "Entscheidet, ob die erste Einzugshilfslinie angezeigt wird.",
 	DESCRIPTION_GUIDE_COLOR: "Die Farbe der Hilfslinien. Jeder valide CSS Farbwert ist möglich.",
 	DESCRIPTION_GUIDE_STYLE: "Wählt den Stil der Hilfslinie: 'solid'(durchgezogen) oder 'dotted'(gepunktet)."
 });
