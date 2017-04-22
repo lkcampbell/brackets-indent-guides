@@ -27,8 +27,8 @@
 
 define({
     COMMAND_NAME: "Einzugslinien",
-    DESCRIPTION_ENABLED: "Entscheidet, ob die Einzugslinien angezeigt werden.",
+    DESCRIPTION_ENABLED: "Aktiviert die Einzugslinien.",
     DESCRIPTION_HIDE_FIRST: "Entscheidet, ob die erste Einzugslinie angezeigt wird.",
-    DESCRIPTION_GUIDE_COLOR: "Die Farbe der Einzugslinien. Jeder valide CSS Farbwert ist möglich.",
+    DESCRIPTION_GUIDE_COLOR: "Die Farbe der Einzugslinien. Jeder valide CSS-Farbwert ist möglich.",
     DESCRIPTION_GUIDE_STYLE: "Wählt den Stil der Einzugslinie: 'solid'(durchgezogen) oder 'dotted'(gepunktet)."
 });
