@@ -18,6 +18,7 @@
     "i18n": ["en", "de"],
     "package-i18n": {
         "de": {
+            "title": "Einzugslinien",
             "description": "Zeige Einzugslinien im Codeeditor."
         }
     },

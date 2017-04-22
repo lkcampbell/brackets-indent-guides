@@ -4,7 +4,7 @@
 * German translation by [FW](https://github.com/tweakimp)
 
 ## 1.3.7 (04/08/2017)
-* Add support for multiple languages.
+* Add support for multiple languages
 
 ## 1.3.6 (04/07/2017)
 * Added screenshots
