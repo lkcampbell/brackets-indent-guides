@@ -1,26 +1,27 @@
 {
     "name": "brackets-indent-guides",
     "title": "Indent Guides",
-    "version": "1.3.7",
+    "version": "1.3.8",
     "description": "Show indent guides in the code editor.",
     "homepage": "https://github.com/lkcampbell/brackets-indent-guides",
     "author": "Lance Campbell (https://github.com/lkcampbell)",
     "contributors": [
-        "Kenneth Sundqvist <eviloatmeal@gmail.com> (https://github.com/EvilOatmeal)"
+        "Kenneth Sundqvist <eviloatmeal@gmail.com> (https://github.com/EvilOatmeal)",
+        "FW (https://github.com/tweakimp)"
     ],
     "license": "MIT",
-    "categories":"editing",
+    "categories": "editing",
     "keywords": [
         "indentation",
         "guide"
     ],
-    "files": [
-        "main.js",
-        "README.md",
-        "snap.svg-min.js",
-        "strings.js"
-    ],
+    "i18n": ["en", "de"],
+    "package-i18n": {
+        "de": {
+            "description": "Zeige Einzugslinien im Codeeditor."
+        }
+    },
     "engines": {
-        "brackets": ">=1.8.0"
+        "brackets": ">=1.9.0"
     }
 }
