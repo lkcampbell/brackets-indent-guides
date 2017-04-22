@@ -26,5 +26,10 @@
 /*global define */
 
 define({
-    COMMAND_NAME: "Indent Guides"
+    COMMAND_NAME: "Indent Guides",
+    
+    DESCRIPTION_ENABLED: "Determines whether the indent guides will be shown or hidden.",
+    DESCRIPTION_HIDE_FIRST: "Determines whether the first Indent Guide will be hidden or shown.",
+    DESCRIPTION_GUIDE_COLOR: "The color of the indent guides. Can be any valid CSS Color value.",
+    DESCRIPTION_GUIDE_STYLE: 'This value determines the style of the guide: "solid" or "dotted".'
 });

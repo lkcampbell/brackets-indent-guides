@@ -30,19 +30,16 @@ Toggle the extension with **View > Indent Guides**.
 ### Extension Preferences
 
 **`brackets-indent-guides.enabled`** *(boolean)*<br/>
-If the value of this preference is `true`, Indent Guides will be visible.
-If the value is `false`, Indent Guides will be hidden.
+Determines whether the indent guides will be shown or hidden.
+
+**`brackets-indent-guides.hideFirst`** *(boolean)*<br/>
+Determines whether the first Indent Guide will be hidden or shown.
 
 **`brackets-indent-guides.guideColor`** *(string)*<br/>
 The color of the indent guides. Can be any valid CSS Color value.
 
 **`brackets-indent-guides.guideStyle`** *(string)*<br/>
 This value determines the style of the guide: "solid" or "dotted".
-
-**`brackets-indent-guides.hideFirst`** *(boolean)*<br/>
-If the value of this preference is `true` the first Indent Guide will not be drawn.
-This is useful if you are using a Brackets Theme that has a vertical border separating
-the line numbers from the code.  Set the value to `false` to draw all Indent Guides.
 
 For more information on setting preferences see [How to Use Brackets - Preferences](https://github.com/adobe/brackets/wiki/How-to-Use-Brackets#preferences)
 

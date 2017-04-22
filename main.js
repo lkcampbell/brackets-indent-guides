@@ -35,8 +35,10 @@ define(function (require, exports, module) {
         EditorManager       = brackets.getModule("editor/EditorManager"),
         AppInit             = brackets.getModule("utils/AppInit"),
         CommandManager      = brackets.getModule("command/CommandManager"),
-        MainViewManager     = brackets.getModule("view/MainViewManager"),
-        Strings             = require("strings");
+        MainViewManager     = brackets.getModule("view/MainViewManager");
+    
+    // Local modules
+    var Strings = require("strings");
     
     // SVG support
     var Snap = require("snap.svg-min");
@@ -57,19 +59,19 @@ define(function (require, exports, module) {
         prefs       = PreferencesManager.getExtensionPrefs("brackets-indent-guides");
     
     prefs.definePreference("enabled", "boolean", enabled, {
-        description: "If the value of this preference is true, Indent Guides will be visible. If the value is false, Indent Guides will be hidden."
+        description: Strings.DESCRIPTION_ENABLED
     });
     
     prefs.definePreference("hideFirst", "boolean", hideFirst, {
-        description: "If the value of this preference is true the first Indent Guide will not be drawn."
+        description: Strings.DESCRIPTION_HIDE_FIRST
     });
     
     prefs.definePreference("guideColor", "string", guideColor, {
-        description: "The color of the indent guides. Can be any valid CSS Color value."
+        description: Strings.DESCRIPTION_GUIDE_COLOR
     });
     
     prefs.definePreference("guideStyle", "string", guideStyle, {
-        description: 'This value determines the style of the guide: "solid" or "dotted".',
+        description: Strings.DESCRIPTION_GUIDE_STYLE,
         values: ["solid", "dotted"]
     });
     
