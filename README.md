@@ -13,19 +13,19 @@ Toggle the extension with **View > Indent Guides**.
 
 **Life without Indent Guides**:
 
-![main](screenshots/indent-guides-off.png)
+![off](screenshots/indent-guides-off.png)
 
 **Life *with* Indent Guides**:
 
-![main](screenshots/indent-guides-on.png)
+![on](screenshots/indent-guides-on.png)
 
 **Works great in the dark as well**:
 
-![main](screenshots/indent-guides-dark.png)
+![dark](screenshots/indent-guides-dark.png)
 
 **Preferences let you control the style and color**:
 
-![main](screenshots/indent-guides-red-dotted.png)
+![preferences](screenshots/indent-guides-red-dotted.png)
 
 ### Extension Preferences
 
@@ -72,6 +72,3 @@ code challenges for this extension:
 
 ### License
 MIT-licensed -- see `main.js` for details.
-
-### Compatibility
-Tested on Brackets Release 1.0.0 Mac OSX (Mavericks).
