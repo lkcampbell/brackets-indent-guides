@@ -30,5 +30,5 @@ define({
     DESCRIPTION_ENABLED: "Określa czy podpowiedzi wcięć będą pokazywane lub ukrywane.",
     DESCRIPTION_HIDE_FIRST: "Określa czy pierwsza Podpowiedź Wcięcia będzie pokazana lub ukryta.",
     DESCRIPTION_GUIDE_COLOR: "Kolor podpowiedzi wcięć. Może być dowolną prawidłową wartością koloru CSS.",
-    DESCRIPTION_GUIDE_STYLE: 'Ta wartość określa styl wcięć: "lity" lub "kropkowany".'
+    DESCRIPTION_GUIDE_STYLE: 'Ta wartość określa styl wcięć: "solid" (lity) lub "dotted" (kropkowanym).'
 });
