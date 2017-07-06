@@ -18,12 +18,17 @@
     ],
     "i18n": ["en",
              "de",
+             "pl",
              "sv"],
     "package-i18n": {
         "de": {
             "title": "Einzugslinien",
             "description": "Zeige Einzugslinien im Codeeditor."
         },
+        "pl": {
+            "title: Podpowiedzi Wcięć",
+            "description": "Pokaż podpowiedzi wcięć w edytorze kodu."
+        }
         "sv": {
             "title": "Indragslinjer",
             "description": "Visa stödlinjer för indentering i kodeditorn."
