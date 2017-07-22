@@ -1,14 +1,15 @@
 {
     "name": "brackets-indent-guides",
     "title": "Indent Guides",
-    "version": "1.3.9",
+    "version": "1.3.10",
     "description": "Show indent guides in the code editor.",
     "homepage": "https://github.com/lkcampbell/brackets-indent-guides",
     "author": "Lance Campbell (https://github.com/lkcampbell)",
     "contributors": [
         "Kenneth Sundqvist <eviloatmeal@gmail.com> (https://github.com/EvilOatmeal)",
         "FW (https://github.com/tweakimp)",
-        "Mikael Jorhult (https://github.com/mikaeljorhult)"
+        "Mikael Jorhult (https://github.com/mikaeljorhult)",
+        "Michał Korczak (https://github.com/MajkelKorczak)"
     ],
     "license": "MIT",
     "categories": "editing",

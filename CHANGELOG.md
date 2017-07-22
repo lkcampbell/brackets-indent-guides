@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.3.10 (06/22/2017)
+* Polish translation by [Michał Korczak](https://github.com/MajkelKorczak)
+
 ## 1.3.9 (04/23/2017)
 * Swedish translation by [Mikael Jorhult](https://github.com/mikaeljorhult)
 
