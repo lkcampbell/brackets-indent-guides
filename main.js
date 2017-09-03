@@ -157,7 +157,7 @@ define(function (require, exports, module) {
     }
     
     function updateUI() {
-        var editor  = EditorManager.getCurrentFullEditor(),
+        var editor  = EditorManager.getActiveEditor(),
             cm      = editor ? editor._codeMirror : null;
         
         // Update CodeMirror overlay if editor is available
@@ -194,6 +194,7 @@ define(function (require, exports, module) {
         });
         
         MainViewManager.on("currentFileChange", updateUI);
+        EditorManager.on("activeEditorChange", updateUI);
         
         // Initialize guide SVG
         guideSVG    = new Snap();
