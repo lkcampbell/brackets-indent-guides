@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.3.11 (09/03/2017)
+* Indent Guides now work in Quick Edit editor
+
 ## 1.3.10 (07/22/2017)
 * Polish translation by [Michał Korczak](https://github.com/MajkelKorczak)
 
